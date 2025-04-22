@@ -1,0 +1,62 @@
+
+#include<iostream>
+using namespace std;
+
+class clsPerson {
+
+    class clsAddress
+    {
+    private:
+        string _AddressLine1;
+        string _AddressLine2;
+        string _City;
+        string _Country;
+
+    public:
+        clsAddress(string AddressLine1, string AddressLine2, string City, string Country) {
+            _AddressLine1=AddressLine1;
+            _AddressLine2=AddressLine2;
+            _City=City;
+            _Country=Country;
+        }
+        void Print()
+        {
+            cout << "\nAddress:\n";
+            cout << _AddressLine1 << endl;
+            cout << _AddressLine2 << endl;
+            cout << _City << endl;
+            cout << _Country << endl;
+        }
+    };
+    string _Name;
+public:
+    clsAddress Address=clsAddress("","","","");
+
+    clsPerson(string AddressLine1, string AddressLine2, string City, string Country, string Name) {
+        Address = clsAddress(AddressLine1, AddressLine2, City, Country);
+        _Name = Name;
+    }
+    /* clsPerson(string AddressLine1, string AddressLine2, string City, string Country, string Name) :
+         Address(AddressLine1, AddressLine2, City, Country){
+        _Name = Name;
+    }*/
+    void Print() {
+        cout << "Name " << _Name;
+        Address.Print();
+    }
+    
+
+
+};
+
+int main()
+
+{
+    clsPerson Person("Dr medioni 1 lahrouine casa", "hay california", "Casablanca", "Moroccco", "Yacin ELANSAR");
+    Person.Print();
+    cout << "\n+===============+\n";
+    Person.Address.Print();
+    
+    system("pause>0");
+    return 0;
+}

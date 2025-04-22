@@ -1,0 +1,55 @@
+#include<iostream>
+#include <vector>
+#include "clsDeveloper.h"
+using namespace std;
+
+
+
+int main()
+
+{
+    //vector <clsDeveloper> developers;
+    clsDeveloper Developer1(1, "Yacin", "ELANSAR", "yacinelansardev@gmail.com", "0707294197", "Backend Developer", "IT Backend", 10000, "C#");
+    clsDeveloper Developer2(2, "Ahmed", "Sami", "ahmedsami@gmail.com", "0707294198", "Frontend Developer", "IT Frontend", 9000, "JavaScript");
+    clsDeveloper Developer3(3, "Sara", "Mounir", "saramounir@gmail.com", "0707294199", "Full Stack Developer", "IT Development", 12000, "JavaScript, Node.js");
+    clsDeveloper Developer4(4, "Ali", "Tariq", "alitariq@gmail.com", "0707294200", "DevOps Engineer", "IT Operations", 11000, "Python");
+    clsDeveloper Developer5(5, "Zahra", "Khalid", "zahrakhalid@gmail.com", "0707294201", "Mobile Developer", "Mobile Development", 9500, "Kotlin");
+    
+    //methode1
+   /* developers.push_back(Developer1);
+    developers.push_back(Developer2);
+    developers.push_back(Developer3);
+    developers.push_back(Developer4);
+    developers.push_back(Developer5);
+
+    for (clsDeveloper& devloper : developers) {
+        devloper.Print();
+    }*/
+
+    //methode2:u have to declare default constructor ,
+    // the compiler needs a way to initialize each object in the array.
+    /*short NumberOfObjects = 5;
+    clsDeveloper* developers = new clsDeveloper[NumberOfObjects];
+    developers[0] = Developer1;
+    developers[1] = Developer2;
+    developers[2] = Developer3;
+    developers[3] = Developer4;
+    developers[4] = Developer5;
+
+    for (short i = 0; i < 5; i++)
+    {
+        developers[i].Print();
+    }
+    delete[] developers;
+    */
+
+    //methode3
+    clsDeveloper developers[] = { Developer1,Developer2 ,Developer3 ,Developer4 ,Developer5 };
+    for (short i = 0; i < 5; i++)
+    {
+        developers[i].Print();
+    }
+	system("pause>0");
+
+}
+

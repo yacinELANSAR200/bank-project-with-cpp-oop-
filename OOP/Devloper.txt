@@ -1,0 +1,175 @@
+#include <iostream>
+using namespace std;
+
+
+class clsPerson {
+private:
+	int _Id;
+	string _FirstName;
+	string _LastName;
+	string _Email;
+	string _Phone;
+public:
+	clsPerson(int Id, string FirstName, string LastName, string Email, string Phone) {
+		_Id = Id;
+		_FirstName = FirstName;
+		_LastName = LastName;
+		_Email = Email;
+		_Phone = Phone;
+	}
+	int getId() {
+		return _Id;
+	}
+	void setFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	string getFirstName() {
+		return _FirstName;
+	}
+	__declspec(property(get = getFirstName, put = setFirstName))string FirstName;
+
+	void setLastName(string LastName) {
+		_LastName = LastName;
+	}
+	string getLastName() {
+		return _LastName;
+	}
+	__declspec(property(get = getLastName, put = setLastName))string LastName;
+
+	void setEmail(string Email) {
+		_Email = Email;
+	}
+	string getEmail() {
+		return _Email;
+	}
+	__declspec(property(get = getEmail, put = setEmail))string Email;
+
+	void setPhone(string Phone) {
+		_Phone = Phone;
+	}
+	string getPhone() {
+		return _Phone;
+	}
+	__declspec(property(get = getPhone, put = setPhone))string Phone;
+
+	virtual void Print() {
+		cout << "\n===============================\n";
+		cout << "\t Info\t";
+		cout << "\n===============================\n";
+		cout << "Id : " << _Id;
+		cout << "\nFirst Name : " << _FirstName;
+		cout << "\nLast Name : " << _LastName;
+		cout << "\nEmail : " << _Email;
+		cout << "\nPhone : " << _Phone;
+		cout << "\n===============================\n";
+	}
+	void SendEmail(string Subject, string Body) {
+		cout << "The following message sent succefully to email: " << _Email << endl;
+		cout << "Subject: " << Subject << endl;
+		cout << "Body: " << Body << endl;
+	}
+	void SendSMS(string SMS) {
+		cout << "The following SMS sent succefully to Phone: " << _Phone << endl;
+
+	}
+};
+
+class clsEmployee :public clsPerson {
+protected:
+	bool protectedExample = false;
+private:
+	float _Salary;
+	string _Department;
+	string _Title;
+public:
+	clsEmployee(int Id, string FirstName, string LastName, string Email, string Phone,string Title,string Department,float Salary)
+		:clsPerson(Id,FirstName,LastName,Email,Phone) {
+		_Salary = Salary;
+		_Department = Department;
+		_Title = Title;
+	}
+	float getSalary() {
+		return _Salary;
+	}
+	string getDepartment() {
+		return _Department;
+	}
+	string getTitle() {
+		return _Title;
+	}
+	void setSalary(double Salary) {
+		_Salary = Salary;
+	}
+	void setDepartment(string Department) {
+		_Department = Department;
+	}
+	void setTitle(string Title) {
+		_Title = Title;
+	}
+	void Print() {
+		cout << "\n===============================\n";
+		cout << "\t Info\t";
+		cout << "\n===============================\n";
+		cout << "Id : " << getId();
+		cout << "\nFirst Name : " << getFirstName();
+		cout << "\nLast Name : " << getLastName();
+		cout << "\nEmail : " << getEmail();
+		cout << "\nTitle : " << _Title;
+		cout << "\nDepartment : " << _Department;
+		cout << "\nSalary : " << _Salary;
+		cout << "\n===============================\n";
+	}
+};
+
+class clsDeveloper :public clsEmployee {
+private:
+	string _MainProgrammingLanguage;
+public:
+	clsDeveloper(int Id, string FirstName, string LastName, string Email, string Phone, string Title, string Department, float Salary, string MainProgrammingLanguage)
+		:clsEmployee(Id, FirstName, LastName, Email, Phone, Title, Department, Salary) {
+		_MainProgrammingLanguage = MainProgrammingLanguage;
+	}
+	void setMainProgrammingLanguage(string MainProgrammingLanguage) {
+		_MainProgrammingLanguage = MainProgrammingLanguage;
+	}
+	string getMainProgrammingLanguage() {
+		return _MainProgrammingLanguage;
+	}
+	void IsTheDevloperPresentToday(bool isPresent=false) {
+		if (isPresent)
+		{
+			cout << "Yes the developer is present today:)";
+		}
+		else {
+			cout << "The developer is absent today :/";
+		}
+	}
+	void Print() {
+		cout << "\n===============================\n";
+		cout << "\t Info\t";
+		cout << "\n===============================\n";
+		cout << "Id : " << getId();
+		cout << "\nFirst Name : " << getFirstName();
+		cout << "\nLast Name : " << getLastName();
+		cout << "\nEmail : " << getEmail();
+		cout << "\nTitle : " << getTitle();
+		cout << "\nDepartment : " << getDepartment();
+		cout << "\nSalary : " << getSalary();
+		cout << "\nMain Programming Language : " << getMainProgrammingLanguage();
+		cout << "\n===============================\n";
+	}
+};
+
+int main() {
+
+	clsDeveloper Developer(10, "Yacin", "ELANSAR", "yacinelansar453@gmail.com", "0707294197","Full stack devloper","It",9990,"C#");
+	
+	clsPerson* Person = &Developer;
+	Person->Print();
+
+	
+
+	
+	//system("pause>0");
+	return 0;
+}

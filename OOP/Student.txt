@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class clsStudent {
+
+private:
+	int _Id;
+	string _FirstName;
+	string _LastName;
+	short _Age;
+
+public:
+	static int nbStudents;
+	clsStudent(string FirstName, string LastName,short Age) {
+		_FirstName = FirstName;
+		_LastName = LastName;
+		_Age = Age;
+		nbStudents++;
+	}
+	static void HowManyStudentsInSystem() {
+		cout << "The system contain " << nbStudents << " students\n";
+	}
+	//copy constructor
+	/*clsStudent(clsStudent& old_obj) {
+		_FirstName = old_obj.FirstName;
+		_LastName = old_obj.LastName;
+		_Age = old_obj.Age;
+	}*/
+
+	/*~clsStudent() {
+		cout << "I am the destructor!";
+	}*/
+	void setFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	string getFirstName() {
+		return _FirstName;
+	}
+	__declspec(property(get = getFirstName, put = setFirstName))string FirstName;
+
+	void setLastName(string LastName) {
+		_LastName = LastName;
+	}
+	string getLastName() {
+		return _LastName;
+	}
+	__declspec(property(get = getLastName, put = setLastName))string LastName;
+
+	void setAge(short Age) {
+		_Age = Age;
+	}
+	short getAge() {
+		return _Age;
+	}
+	__declspec(property(get = getAge, put = setAge))short Age;
+
+	//read only
+	int Id() {
+		return _Id;
+	}
+	void PrintStudentCard() {
+		cout << "\n===============================\n";
+		cout << "\tStudent Card\t";
+		cout << "\n===============================\n";
+		cout << "First Name : " << getFirstName();
+		cout << "\nLast Name : " << getLastName();
+		cout << "\nAge : " << getAge();
+		cout << "\n===============================\n";
+	}
+	
+};
+
+int clsStudent::nbStudents = 0;
+
+
+int main()
+{
+	
+	clsStudent Student1("Yacin", "ELANSAR", 21);
+	clsStudent Student2("Khalid", "Rachidi", 21);
+	clsStudent Student3("Aya", "Smayka", 21);
+	clsStudent Student4("Salma", "Saoudi", 20);
+	clsStudent Student5("Rachid", "Daoui", 21);
+	clsStudent Student6("Malak", "khadiji", 21);
+	
+	clsStudent::HowManyStudentsInSystem();
+
+
+	system("pause>0");
+
+
+	return 0;
+}
+

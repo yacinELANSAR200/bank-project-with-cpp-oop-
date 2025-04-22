@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+
+class clsPerson {
+private:
+	int _Id;
+	string _FirstName;
+	string _LastName;
+	string _Email;
+	string _Phone;
+public:
+	clsPerson(int Id,string FirstName, string LastName, string Email, string Phone) {
+		_Id = Id;
+		_FirstName = FirstName;
+		_LastName = LastName;
+		_Email = Email;
+		_Phone = Phone;
+	}
+	int getId() {
+		return _Id;
+	}
+	void setFirstName(string FirstName) {
+		_FirstName = FirstName;
+	}
+	string getFirstName() {
+		return _FirstName;
+	}
+	__declspec(property(get = getFirstName, put = setFirstName))string FirstName;
+
+	void setLastName(string LastName) {
+		_LastName = LastName;
+	}
+	string getLastName() {
+		return _LastName;
+	}
+	__declspec(property(get = getLastName, put = setLastName))string LastName;
+
+	void setEmail(string Email) {
+		_Email = Email;
+	}
+	string getEmail() {
+		return _Email;
+	}
+	__declspec(property(get = getEmail, put = setEmail))string Email;
+
+	void setPhone(string Phone) {
+		_Phone = Phone;
+	}
+	string getPhone() {
+		return _Phone;
+	}
+	__declspec(property(get = getPhone, put = setPhone))string Phone;
+
+	void Print() {
+		cout << "\n===============================\n";
+		cout << "\t Info\t";
+		cout << "\n===============================\n";
+		cout << "Id : " << _Id;
+		cout << "\nFirst Name : " << _FirstName;
+		cout << "\nLast Name : " << _LastName;
+		cout << "\nEmail : " << _Email;
+		cout << "\nPhone : " <<_Phone;
+		cout << "\n===============================\n";
+	}
+	void SendEmail(string Subject, string Body) {
+		cout << "The following message sent succefully to email: " << _Email <<endl;
+		cout << "Subject: " << Subject << endl;
+		cout << "Body: " << Body << endl;
+	}
+	void SendSMS(string SMS) {
+		cout << "The following SMS sent succefully to Phone: " << _Phone << endl;
+
+	}
+};
+int main() {
+
+	clsPerson Person1(10,"Yacin","ELANSAR","yacinelansar453@gmail.com","0707294197");
+	Person1.Print();
+	Person1.SendEmail("Hi", "How are you?");
+	Person1.SendSMS("How are you?");
+	clsPerson Person2(20, "Khalid", "ELANSAR", "khalid@gmail.com", "0790129917");
+	Person2.Print();
+	Person2.SendEmail("Hi", "How are you?");
+	Person2.SendSMS("How are you?");
+	system("pause>0");
+	return 0;
+}
